@@ -25,7 +25,12 @@ class Programa(metaclass = ABCMeta):
     def __str__(self):
         return f'{self.nome} - {self.ano} - {self.likes} Likes'
 
-class Filme(Programa):
+# Exemplo de mixin
+class Iniciavel:
+    def play(self):
+        print("> Iniciando conteúdo no aplicativo.")
+
+class Filme(Programa, Iniciavel):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
@@ -61,6 +66,8 @@ vingadores = Filme('Vingadores - Guerra Infinita', 2019, 160)
 atlanta = Serie('Atlanta', 2018, 3)
 tmep = Filme('Todo mundo em pânico', 1999, 100)
 demolidor = Serie('Demolidor', 2016, 2)
+
+vingadores.play()
 
 vingadores.dar_like()
 tmep.dar_like()
